@@ -2,14 +2,14 @@
 	require_once(ROOT . "/utils/IService.php");
 	require_once(ROOT . "/utils/AbstractService.php");
 	require_once(ROOT . "/utils/IDao.php");
-	require_once(ROOT . "/dao/BadgeDao.php");
+	require_once(ROOT . "/dao/GarePeageDao.php");
 
-	class BadgeService extends AbstractService
+	class GarePeageService extends AbstractService
 				implements IService {
-		private BadgeDao $dao;
+		private GarePeageDao $dao;
 
 		function __construct() {
-			$this->dao = new BadgeDao();
+			$this->dao = new GarePeageDao();
 		}
 
 		function getDao() : IDao {
@@ -18,8 +18,8 @@
 		public function findById(int $id) {
 			return $this->dao->findById($id);
 		}
-		public function update($badge) {
-			return $this->dao->update($badge);
+		public function update($GarePeage) {
+			return $this->dao->update($GarePeage);
 		}
 
 		public function delete(int $id) {
