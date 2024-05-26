@@ -5,6 +5,11 @@ require_once(ROOT . "/utils/functions.php");
 require_once(ROOT . "/services/BadgeService.php");
 
 class BadgePutController extends AbstractController implements IController {
+    private BadgeService $service;
+		private string $badge;
+        private string $badgeId;
+		private string $nom;
+		private Badge $newBadge;
 
     public function __construct($form, $controllerName) {
         parent::__construct($form, $controllerName);

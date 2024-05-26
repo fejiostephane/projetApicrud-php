@@ -2,7 +2,7 @@
         require_once(ROOT . "/utils/IDao.php");
         require_once(ROOT . "/utils/AbstractDao.php");
         require_once(ROOT . "/utils/BddSingleton.php");
-        require_once(ROOT . "/modele/Badge.php");
+        require_once(ROOT . "/modele/GarePeage.php");
 
         class GarePeageDao extends AbstractDao implements IDao {
 		function findAll() {
@@ -14,7 +14,7 @@
 			// Boucle pour transferer le resultSet dans mon tableau de Badges
 			foreach ($resultSet as $row) {
 				$GarePeage = GarePeage::createFromArray($row);
-				array_push($badges, $GarePeage);
+				array_push($GarePeages, $GarePeage);
 			}
 			return $GarePeages;
 		}
@@ -45,8 +45,8 @@
 			$sql = "UPDATE garepeage SET GarePeage = :GarePeage, nomPeage = :nomPeage WHERE id = :id";
 			$stmt = $pdo->prepare($sql);
 			$stmt->bindValue(':id', $entity->getId(), PDO::PARAM_INT);
-			$stmt->bindValue(':GarePeage', $entity->getBadge());
-			$stmt->bindValue(':nomPeage', $entity->getNom());
+			$stmt->bindValue(':GarePeage', $entity->getGarepeage());
+			$stmt->bindValue(':nomPeage', $entity->getNomPeage());
 			$stmt->execute();
 			return $entity;
 		}
